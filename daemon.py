@@ -28,14 +28,14 @@ def notify_trackinfo():
         pass
 
 def notify_activity():
-    try:
-        with open('activity.txt') as f:
-            url = 'http://onlinetrackinfo.neochar.com/update-activity.php'
-            r = requests.post(url, data={
-                'activity': f.read()
-                })
-    except:
-        pass
+    # try:
+    with open('activity.txt') as f:
+        url = 'http://onlinetrackinfo.neochar.com/update-activity.php'
+        r = requests.post(url, data={
+            'activity': f.read()
+            })
+    # except:
+        # pass
 
 while 1:
 
