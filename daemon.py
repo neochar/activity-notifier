@@ -4,8 +4,8 @@ import subprocess
 import requests
 import time
 
-while 1:
 
+def notify_trackinfo():
     try:
         output = subprocess.check_output('mocp -i', shell=True).decode('utf-8')
 
@@ -19,7 +19,7 @@ while 1:
 
         songname = title if title else filename
 
-        url = 'http://onlinetrackinfo.neochar.com/update.php'
+        url = 'http://onlinetrackinfo.neochar.com/update_trackinfo.php'
         r = requests.post(url, data={
             'songname': songname,
             'songlength': 313
@@ -27,4 +27,20 @@ while 1:
     except:
         pass
 
-    time.sleep(5)
+def notify_activity():
+    try:
+        with open('activity.txt') as f:
+            url = 'http://onlinetrackinfo.neochar.com/update-activity.php'
+            r = requests.post(url, data={
+                'activity': f.read()
+                })
+
+    except:
+        pass
+
+    while 1:
+
+        notify_trackinfo()
+        notify_activity()
+
+        time.sleep(5)
