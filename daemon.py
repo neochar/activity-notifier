@@ -34,13 +34,12 @@ def notify_activity():
             r = requests.post(url, data={
                 'activity': f.read()
                 })
-
     except:
         pass
 
-    while 1:
+while 1:
 
-        notify_trackinfo()
-        notify_activity()
+    notify_trackinfo()
+    notify_activity()
 
-        time.sleep(5)
+    time.sleep(5)
