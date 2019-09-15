@@ -21,4 +21,4 @@ while 1:
             })
         print(r.text)
 
-    sleep(5)
+    time.sleep(5)
